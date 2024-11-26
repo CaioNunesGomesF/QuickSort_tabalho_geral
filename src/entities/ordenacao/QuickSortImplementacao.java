@@ -2,14 +2,14 @@ package entities.ordenacao;
 
 import java.util.Date;
 
-public class QuickSortImplementacao implements OrdenarArray {
+public class QuickSortImplementacao implements OrdenarPerDate {
 
     @Override
     public void quickSort(Date[] datas, int esquerda, int direita) {
         if (esquerda < direita) {
-            int indicePivo = particao(datas, esquerda, direita);
-            quickSort(datas, esquerda, indicePivo - 1);
-            quickSort(datas, indicePivo + 1, direita);
+            int p = particao(datas, esquerda, direita);
+            quickSort(datas, esquerda, p - 1);  // Corrigido aqui: subtrair 1 do pivô
+            quickSort(datas, p + 1, direita);
         }
     }
 
@@ -20,7 +20,7 @@ public class QuickSortImplementacao implements OrdenarArray {
 
         for (int j = esquerda; j < direita; j++) {
             // Comparar as datas
-            if (datas[j].compareTo(pivo) <= 0) {
+            if (datas[j].compareTo(pivo) > 0) {  // Alterado para ordem decrescente
                 i++;
                 trocar(datas, i, j);
             }
@@ -36,4 +36,3 @@ public class QuickSortImplementacao implements OrdenarArray {
         vetor[j] = temp;
     }
 }
-

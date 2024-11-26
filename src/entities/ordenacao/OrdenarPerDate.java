@@ -2,7 +2,7 @@ package entities.ordenacao;
 
 import java.util.Date;
 
-public interface OrdenarArray {
+public interface OrdenarPerDate {
 
     void quickSort(Date[] datas, int esquerda, int direita);
 
